@@ -8,14 +8,21 @@ namespace Usr1
         {
             string enteredValue;
             double value;
+            bool isValidInput = true;
 
             do
             {
                 Console.Clear();
+
+                if (!isValidInput)
+                {
+                    Console.WriteLine("Invalid Input, Please Try Again...");
+                }
                 
                 Console.Write(message);
                 enteredValue = Console.ReadLine();
-            } while (!Double.TryParse(enteredValue, out value));
+                isValidInput = Double.TryParse(enteredValue, out value);
+            } while (!isValidInput);
 
             return value;
         }
